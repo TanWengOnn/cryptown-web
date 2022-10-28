@@ -18,18 +18,16 @@ const fetchCryptoList = async () => {
     }
 }
 
-const fetchCryptoDetail = async () => {
+const fetchCryptoDetail = async (cryptoId) => {
     const response = await axios.post('https://localhost:5000/api/crypto/cryptoDetail', 
     {
-        'cryptoId': 'POST from React'
+        'cryptoId': cryptoId
     }, 
     {
         headers: {
             'Content-Type': 'application/json',
           }
     })
-
-
 
     const json = await response.data
 
@@ -38,4 +36,44 @@ const fetchCryptoDetail = async () => {
     }
 }
 
-export { fetchCryptoList, fetchCryptoDetail }
+const login = async (email, password) => {
+    const response = await axios.post('https://localhost:5000/api/user/login', 
+    {
+        'email': email,
+        'password': password
+    }, 
+    {
+        headers: {
+            'Content-Type': 'application/json',
+          }
+    })
+
+    const json = await response.data
+
+    if (response.status === 200) {
+        return json 
+    }
+}
+
+
+const signup = async (email, username, password, confirm_password) => {
+    const response = await axios.post('https://localhost:5000/api/user/signup', 
+    {
+        'email': email,
+        'username': username,
+        'password': password,
+        'confirm_password':confirm_password
+    }, 
+    {
+        headers: {
+            'Content-Type': 'application/json',
+          }
+    })
+
+    const json = await response.data
+
+    if (response.status === 200) {
+        return json 
+    }
+}
+export { fetchCryptoList, fetchCryptoDetail, login, signup}
