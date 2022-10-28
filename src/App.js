@@ -2,26 +2,24 @@ import { useEffect, useState } from "react"
 import axios from "axios";
 import './App.css';
 
+import { fetchCryptoList, fetchCryptoDetail } from "./functions/APIs"
+
 function App() {
   const [crypto, setCrypto] = useState(null)
 
   useEffect(() => {
-    const fetchCrypto = async () => {
-        const response = await axios('http://localhost:5000/cryptown/api')
-        const json = await response.data
-
-        if (response.status === 200) {
-            setCrypto(json)
-        }
+    const fetchAPI = async () => {
+      // let json = await fetchCryptoList()
+      let json = await fetchCryptoDetail()
+      setCrypto(json)
     }
-    fetchCrypto()
     
-    
+    fetchAPI()
   }, [])
 
   return (
     <div>
-      <h2>{crypto && (<div>{crypto.mssg}</div>)}</h2>
+      <h2>{crypto && (<div>{crypto.result}</div>)}</h2>
     </div>
   );
 }
