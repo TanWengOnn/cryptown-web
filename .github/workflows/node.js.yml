@@ -27,6 +27,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: id
     - run: docker compose -f /home/ubuntu/cryptown-backend/docker-compose.yml down
     - run: npm cache clear --force
     - run: npm ci --verbose
