@@ -11,7 +11,7 @@ const Coin = ({}) => {
   useEffect(() => {
     const fetchCrypto = async () => {
       const response = await axios(
-        "https://localhost:8443/api/crypto/cryptoList"
+        "https://localhost:5000/api/crypto/cryptoList"
       );
       const json = await response.data;
 
@@ -34,7 +34,7 @@ const Coin = ({}) => {
   return (
     <div className="coin-app">
       <div className="coinsearchFilter-search">
-        <h1 className="coin-text">Search</h1>
+        <h1 className="coin-text">Search CI/CD</h1>
         <form>
           <input
             className="coin-input"
