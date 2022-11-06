@@ -32,6 +32,6 @@ jobs:
     - run: npm cache clear --force
     - run: npm ci --verbose
     - run: npm run build --if-present --verbose
-    - run: docker compose -f /home/ubuntu/cryptown-backend/docker-compose.yml --env-file /home/ubuntu/cryptown-backend/.env up --build
+    - run: docker compose -f /home/ubuntu/cryptown-backend/docker-compose.yml --env-file /home/ubuntu/cryptown-backend/.env up --build -d
     env:
      CI: false
