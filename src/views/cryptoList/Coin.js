@@ -11,7 +11,7 @@ const Coin = ({}) => {
   useEffect(() => {
     const fetchCrypto = async () => {
       const response = await axios(
-        "http://localhost:5000/api/crypto/cryptoList"
+        "http://13.228.137.68/test/api/crypto/cryptoList"
       );
       const json = await response.data;
 

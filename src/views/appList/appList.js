@@ -35,7 +35,7 @@ const AppList = () => {
 
   useEffect(() => {
     const fetchExchangeList = async () => {
-      const response = await axios("http://localhost:5000/api/exchange");
+      const response = await axios("http://13.228.137.68/test/api/exchange");
       const json = await response.data;
 
       if (response.status === 200) {
