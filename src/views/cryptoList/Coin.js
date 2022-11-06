@@ -34,7 +34,7 @@ const Coin = ({}) => {
   return (
     <div className="coin-app">
       <div className="coinsearchFilter-search">
-        <h1 className="coin-text">Search CI/CD TEST NODE 16</h1>
+        <h1 className="coin-text">Search CI/CD TEST 2 NODE 16</h1>
         <form>
           <input
             className="coin-input"
