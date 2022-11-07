@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    build: 
+      context: .
+    ports: 
+      - "3000:3000"
+    # tty: true
+    command: [sh, -c, "npm ci && npm run build && npx serve build"]
+    container_name: cryptown_web
+
+# add in networks, volumes, ports, postgres environment variables  
