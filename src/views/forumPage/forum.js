@@ -23,6 +23,7 @@ import ForumHeaderSection from "../../components/forumHeader/forumHeader";
 const entities = require("entities");
 
 const ForumPage = () => {
+  const [postList, setPostList] = useState(null);
   const [newPost, setNewPost] = useState("");
   const [error, setError] = useState("");
   const { user } = useAuthContext();
@@ -42,11 +43,13 @@ const ForumPage = () => {
     const json = await response.data;
 
     if (response.status === 200) {
-      // converting the object into array
+      setPostList(json);
       const objKeyArr = Object.keys(json["postsObj"]).map(
         (objKey) => json["postsObj"][objKey]
       );
-      dispatch({ type: "SET_POSTS", payload: objKeyArr });
+      if (response.status === 200) {
+        dispatch({ type: "SET_POSTS", payload: objKeyArr });
+      }
     }
   };
 
@@ -132,14 +135,6 @@ const ForumPage = () => {
               type="REPLY_ERROR"
               dialogTitle="Failed to Add Post"
               dialogMessage={error}
-            />
-          ) : null}
-
-          {postSuccessful ? (
-            <NormalDialog
-              type="POST_SUCCESSFUL"
-              dialogTitle="Post Successful"
-              dialogMessage="Thank you for joining the talk"
             />
           ) : null}
 
